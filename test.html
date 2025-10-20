@@ -1425,13 +1425,13 @@
         <path id="partialPath" />
       </defs>
       <text dy="-2">
-        <textPath style="font-family: fantasy;" xlink:href="#partialPath" startOffset="12">
+        <textPath style="font-family: fantasy;" xlink:href=" #partialPath " startOffset="12">
           🌹Chúc Mừng Ngày
           🌹.........................................................................................................................................🌹Phụ
           Nữ Việt Nam 20/10!🌹
         </textPath>
       </text>
-      <use id="useThePath" xlink:href="#partialPath" stroke="white" stroke-width=".5" stroke-opacity=".5" fill="none"
+      <use id="useThePath" xlink:href=" #partialPath " stroke="white" stroke-width=5 stroke-opacity=5 fill="none"
         style="display:none;" />
     </svg>
 
@@ -1515,7 +1515,7 @@
   <div id="pageLoader" class="show">
     <div class="wrap">
       <div class="spinner"></div>
-      <div class="text">Đang tải dữ liệu...</div>
+      <div class="text">Đang tải dữ liệu... </div>
     </div>
   </div>
   <!-- hộp quà-->
@@ -1526,7 +1526,7 @@
       class="box-gift base">
   </div>
 
-  <script src="./detect-devtools.js"></script>
+  <script src=""></script>
   <script type='text/javascript'>
     // Bypass for developers
     const keyName = 'key';
@@ -1581,7 +1581,7 @@
       // Giả lập thời gian tải để giữ nguyên hiệu ứng
       setTimeout(() => {
         try {
-          console.log('Mock data loaded:', mockData);
+
           // Gán biến cho typing dùng
           window.textLetterH2 = typeof mockData.titleLetter === 'string' ? mockData.titleLetter : '';
           window.textLetterP = typeof mockData.contentLetter === 'string' ? mockData.contentLetter : '';
@@ -1591,7 +1591,7 @@
           // Bắt đầu chạy UI
           document.body.classList.add('is-loaded');
         } catch (e) {
-          console.error('Mock data error:', e);
+
           hideLoader();
           document.body.classList.add('is-loaded');
         }
@@ -1662,7 +1662,7 @@
     function initLetterScene() {
       try {
         // SVG typing theo đường cong
-        const SVG_NS = "http://www.w3.org/2000/svg";
+        const SVG_NS = "http://www.w3.org/2000/svg"
         const shape = document.getElementById('shape');
         const partialPath = document.getElementById('partialPath');
         const theSvg = document.getElementById('theSvg');
@@ -1673,7 +1673,7 @@
         let t = 0;
         let lengthAtT = pathlength * t;
         let d = shape.getAttribute('d');
-        let n = (d.match(/C/gi) || []).length;
+        let n = (d.match(/C/gi) || []).length
         let pos = 0;
 
         class SubPath {
@@ -1780,7 +1780,7 @@
           indexText = 0; textLetter.textContent = ''; clearInterval(timoutTextLetter);
           timoutTextLetter = setInterval(() => { textCharLetter(); }, 100);
         }
-        let indexTextContent = 0; let textLetterContent = document.querySelector('#letterScene .contentLetter');
+        let indexTextContent = 0; let textLetterContent = document.querySelector('#letterScene .contentLetter ');
         let timoutTextLetterContent;
         function textCharLetterContent() {
           const src = (window.textLetterP || '');
@@ -1800,17 +1800,20 @@
         if ($) {
           $('.valentines').off('mouseenter mouseleave').on('mouseenter', function () {
             $('.card').stop().animate({ top: '-90px' }, 'slow');
-          }).on('mouseleave', function () {
-            $('.card').stop().animate({ top: 0 }, 'slow');
-          });
-          $('.card').off('click').on('click', function () {
-            $('.wrapperLetterForm').fadeIn();
-            // Chỉ chạy typing nếu có dữ liệu đã gán từ mock data
-            if ((window.textLetterH2 || '') && (window.textLetterP || '')) {
-              funcTimeoutLetter();
-            }
-            // Không phát nhạc ở đây nữa; nhạc đã phát khi bấm hộp quà
-          });
+          }).on
+            (' mouseleave ', function () {
+              $('.card').stop().animate({ top: 0 }, 'slow');
+            });
+          $('.card ').off
+            ('click').on
+            ('click', function () {
+              $('.wrapperLetterForm').fadeIn();
+              // Chỉ chạy typing nếu có dữ liệu đã gán từ mock data
+              if ((window.textLetterH2 || '') && (window.textLetterP || '')) {
+                funcTimeoutLetter();
+              }
+              // Không phát nhạc ở đây nữa; nhạc đã phát khi bấm hộp quà
+            });
           // Ẩn hiện nút mũi tên theo trường image
           const hasImage = !!(document.querySelector('#giftOverlay > img')?.getAttribute('src') || '').trim();
           if (!hasImage) {
@@ -1819,39 +1822,43 @@
             $('.letterNextBtn').removeClass('is-hidden');
           }
           // Nút mũi tên: ẩn tiếp mọi thứ (chỉ còn nền), giữ nguyên nhạc
-          $('.letterNextBtn').off('click').on('click', function () {
-            try {
-              $('.wrapperLetterForm').hide();
-              document.body.classList.add('final-hide');
-              // Hiện ảnh quà với hiệu ứng fade-in
-              var overlay = document.getElementById('giftOverlay');
-              if (overlay) {
-                overlay.classList.add('show');
-                // Typing caption dưới ảnh nếu có dữ liệu từ mock data
-                var capEl = document.getElementById('giftCaption');
-                var txt = (window.captionImage || '').trim();
-                if (capEl) {
-                  capEl.textContent = '';
-                  if (txt.length > 0) {
-                    var i = 0;
-                    (function type() {
-                      if (i < txt.length) {
-                        capEl.textContent += txt.charAt(i++);
-                        setTimeout(type, 40);
-                      }
-                    })();
-                  } else {
-                    // nếu trống, ẩn caption để không chiếm chỗ
-                    capEl.style.display = 'none';
+          $('.letterNextBtn ').off
+            ('click').on
+            ('click', function () {
+              try {
+                $('.wrapperLetterForm').hide();
+                document.body.classList.add('final-hide');
+                // Hiện ảnh quà với hiệu ứng fade-in
+                var overlay = document.getElementById('giftOverlay');
+                if (overlay) {
+                  overlay.classList.add('show');
+                  // Typing caption dưới ảnh nếu có dữ liệu từ mock data
+                  var capEl = document.getElementById('giftCaption');
+                  var txt = (window.captionImage || '').trim();
+                  if (capEl) {
+                    capEl.textContent = '';
+                    if (txt.length > 0) {
+                      var i = 0;
+                      (function type() {
+                        if (i < txt.length) {
+                          capEl.textContent += txt.charAt(i++);
+                          setTimeout(type, 40);
+                        }
+                      })();
+                    } else {
+                      // nếu trống, ẩn caption để không chiếm chỗ
+                      capEl.style.display = 'none';
+                    }
                   }
                 }
-              }
-            } catch (e) { }
-          });
-          $('.fa-xmark').off('click').on('click', function () {
-            $('.wrapperLetterForm').css('display', 'none');
-            if (bgm) { bgm.pause(); bgm.currentTime = 0; }
-          });
+              } catch (e) { }
+            });
+          $('.fa-xmark ').off
+            ('click').on
+            ('click', function () {
+              $('.wrapperLetterForm').css('display', 'none');
+              if (bgm) { bgm.pause(); bgm.currentTime = 0; }
+            });
         }
 
         // Magic dust
